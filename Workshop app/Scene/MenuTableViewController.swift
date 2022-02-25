@@ -12,9 +12,7 @@ import Kingfisher
 class MenuTableViewController: UITableViewController {
     
     let category: String
-    let menuController = MenuController()
     var menuItems = [MenuItem]()
-     
     init?(coder: NSCoder, category: String) {
         self.category = category
         super.init(coder: coder)
@@ -27,7 +25,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuController.fetchMenuItems(forCategory: category)
+        MenuController.shared.fetchMenuItems(forCategory: category)
         { (result) in
             switch result {
             case .success(let menuItems):

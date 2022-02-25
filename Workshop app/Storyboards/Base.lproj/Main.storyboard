@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVd-ua-y7x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVd-ua-y7x">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,18 +113,77 @@
         <!--Details-->
         <scene sceneID="sct-Lw-heh">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="Bje-z8-vr4" customClass="MenuItemDetailViewController" customModule="Workshop_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuItemDetailViewController" id="Bje-z8-vr4" customClass="MenuItemDetailViewController" customModule="Workshop_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nXJ-I1-uIr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brokenImage" translatesAutoresizingMaskIntoConstraints="NO" id="Jjh-Je-BL4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="269"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKa-DP-moB">
+                                <rect key="frame" x="16" y="373" width="92.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufv-t4-2Nu">
+                                <rect key="frame" x="344.5" y="373" width="53.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Detail" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-aN-IL7">
+                                <rect key="frame" x="16" y="410" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ku-Tl-kfJ">
+                                <rect key="frame" x="20" y="757" width="374" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47564065459999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1W1-mF-Rj8"/>
+                                </constraints>
+                                <state key="normal" title="Add To Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="orderButtonTapped:" destination="Bje-z8-vr4" eventType="touchUpInside" id="mND-Aq-JWY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dKa-DP-moB" firstAttribute="leading" secondItem="r7I-UA-xOJ" secondAttribute="leading" constant="16" id="0RE-vE-04E"/>
+                            <constraint firstItem="ezJ-aN-IL7" firstAttribute="top" secondItem="dKa-DP-moB" secondAttribute="bottom" constant="16" id="2B0-1U-Ldx"/>
+                            <constraint firstItem="r7I-UA-xOJ" firstAttribute="bottom" secondItem="3Ku-Tl-kfJ" secondAttribute="bottom" constant="16" id="4Bz-NW-jOX"/>
+                            <constraint firstItem="ezJ-aN-IL7" firstAttribute="leading" secondItem="r7I-UA-xOJ" secondAttribute="leading" constant="16" id="5zI-MD-5NA"/>
+                            <constraint firstItem="r7I-UA-xOJ" firstAttribute="trailing" secondItem="ezJ-aN-IL7" secondAttribute="trailing" constant="16" id="73E-BJ-lXj"/>
+                            <constraint firstItem="dKa-DP-moB" firstAttribute="top" secondItem="Jjh-Je-BL4" secondAttribute="bottom" constant="16" id="7aU-h4-XEX"/>
+                            <constraint firstItem="r7I-UA-xOJ" firstAttribute="trailing" secondItem="Jjh-Je-BL4" secondAttribute="trailing" id="HKy-MX-jS5"/>
+                            <constraint firstItem="Ufv-t4-2Nu" firstAttribute="top" secondItem="Jjh-Je-BL4" secondAttribute="bottom" constant="16" id="QjA-vZ-FAQ"/>
+                            <constraint firstItem="Jjh-Je-BL4" firstAttribute="leading" secondItem="r7I-UA-xOJ" secondAttribute="leading" id="RUu-Kk-YJB"/>
+                            <constraint firstItem="3Ku-Tl-kfJ" firstAttribute="leading" secondItem="r7I-UA-xOJ" secondAttribute="leading" constant="20" id="Wn1-yD-1Bs"/>
+                            <constraint firstItem="r7I-UA-xOJ" firstAttribute="trailing" secondItem="3Ku-Tl-kfJ" secondAttribute="trailing" constant="20" id="eGX-Mf-FsR"/>
+                            <constraint firstItem="Jjh-Je-BL4" firstAttribute="height" secondItem="nXJ-I1-uIr" secondAttribute="height" multiplier="0.3" id="izL-cK-2UV"/>
+                            <constraint firstItem="r7I-UA-xOJ" firstAttribute="trailing" secondItem="Ufv-t4-2Nu" secondAttribute="trailing" constant="16" id="lMR-df-D3Y"/>
+                            <constraint firstItem="Jjh-Je-BL4" firstAttribute="top" secondItem="r7I-UA-xOJ" secondAttribute="top" id="uJ4-W0-Z5H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r7I-UA-xOJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="GeC-5O-0az"/>
+                    <connections>
+                        <outlet property="addToOrderButton" destination="3Ku-Tl-kfJ" id="yBW-Bm-okG"/>
+                        <outlet property="detailTextLabel" destination="ezJ-aN-IL7" id="kbH-b0-YwO"/>
+                        <outlet property="imageView" destination="Jjh-Je-BL4" id="kkH-DA-lTL"/>
+                        <outlet property="nameLabel" destination="dKa-DP-moB" id="boS-1f-6Tr"/>
+                        <outlet property="priceLabel" destination="Ufv-t4-2Nu" id="8rn-jK-X52"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dq-PQ-0FU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3667" y="68"/>
+            <point key="canvasLocation" x="3912" y="74"/>
         </scene>
         <!--Orders Table View Controller-->
         <scene sceneID="GYa-Ov-fPY">
@@ -135,7 +194,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kew-o9-ZZG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Order" id="kew-o9-ZZG">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kew-o9-ZZG" id="fy9-Gc-enI">
@@ -195,8 +254,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="bag" catalog="system" width="64" height="64"/>
         <image name="brokenImage" width="200" height="200"/>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
     </resources>
 </document>

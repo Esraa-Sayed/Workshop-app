@@ -9,7 +9,6 @@
 import UIKit
 
 class CategoriesTableViewController: UITableViewController {
-    let menuController = MenuController()
     var indicator : UIActivityIndicatorView?
     var categories = [String]()
     
@@ -21,7 +20,7 @@ class CategoriesTableViewController: UITableViewController {
         self.view.addSubview(indicator!)
         indicator?.startAnimating()
         
-        menuController.fetchCategories { [weak self] (result)  in
+        MenuController.shared.fetchCategories { [weak self] (result)  in
             switch result {
             case .success(let categories):
                 self?.updateUI(with: categories ?? [])
