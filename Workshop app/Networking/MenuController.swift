@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class MenuController{
     let baseURL = URL(string: "http://localhost:8080/")!
     static let shared = MenuController()
@@ -18,6 +19,8 @@ class MenuController{
                MenuController.orderUpdatedNotification, object: nil)
         }
     }
+    
+    
 
     func fetchCategories(completion: @escaping (Result<[String]?,Error>) -> Void) {
         let categoriesURL =

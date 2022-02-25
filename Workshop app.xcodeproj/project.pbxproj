@@ -35,7 +35,6 @@
 		02979AAD27C8184500C11252 /* Workshop_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workshop_app.xcdatamodel; sourceTree = "<group>"; };
 		02979AAF27C8184700C11252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02979AB227C8184700C11252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		02979AB427C8184700C11252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B399B0EC259439426BEE5D9 /* Pods_Workshop_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshop_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A040927C8BE3A00ECC36E /* MenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponse.swift; sourceTree = "<group>"; };
 		595A040B27C8BE8400ECC36E /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		595A041327C8C82800ECC36E /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
 		595A041627C8C98800ECC36E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		595A041827C8CB2C00ECC36E /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		595A041B27C918F600ECC36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Workshop app/Info.plist"; sourceTree = "<group>"; };
 		9DE23014358B5C9BCC0E0DCB /* Pods-Workshop app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.debug.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.debug.xcconfig"; sourceTree = "<group>"; };
 		E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
 		F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.release.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,8 +65,8 @@
 		02979A9727C8184500C11252 = {
 			isa = PBXGroup;
 			children = (
+				595A041B27C918F600ECC36E /* Info.plist */,
 				02979AA227C8184500C11252 /* Workshop app */,
-				02979AB427C8184700C11252 /* Info.plist */,
 				02979AA127C8184500C11252 /* Products */,
 				D553B4AE8E2655A08D33BE5F /* Pods */,
 				1BE8CD5DB3F7B9464FB039EC /* Frameworks */,

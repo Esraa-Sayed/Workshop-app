@@ -38,6 +38,19 @@ class MenuItemDetailViewController: UIViewController {
         priceLabel.text = "$\(menuItem.price )"
         detailTextLabel.text = menuItem.itemDescription
         addToOrderButton.layer.cornerRadius = 20.0
+        
+        var imageURL = menuItem.imageURL
+    
+        let index = imageURL.index(imageURL.endIndex, offsetBy: -4)
+        imageURL = String(imageURL[..<index])
+        print(imageURL)
+        let url = URL(string: String(imageURL))
+        fetchImage(url: url!)
+               { (image) in
+                guard let image = image else { return }
+                   self.imageView.image = image
+            }
+        
     }
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0,
@@ -51,7 +64,20 @@ class MenuItemDetailViewController: UIViewController {
         MenuController.shared.order.menuItems.append(menuItem)
     }
      
-    
+    func fetchImage(url: URL, completion: @escaping (UIImage?)
+       -> Void) {
+        let task = URLSession.shared.dataTask(with: url)
+           { (data, response, error) in
+            if let data = data,
+                let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+
     /*
     // MARK: - Navigation
 
