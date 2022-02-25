@@ -83,7 +83,8 @@ extension MenuItemDetailViewController: DetailsViewProtocol {
             priceLabel.text = "$\(detailsPresenter!.menuItem!.price)"
             detailTextLabel.text = detailsPresenter?.menuItem!.itemDescription
             addToOrderButton.layer.cornerRadius = 20.0
-            
+        print(MenuController.shared.images[detailsPresenter!.menuItem!.id - 1])
+        imageView.image =  UIImage(named: MenuController.shared.images[detailsPresenter!.menuItem!.id - 1])
 //            var imageURL = detailsPresenter?.menuItem!.imageURL
 //
 //            let index = imageURL.index(imageURL.endIndex, offsetBy: -4)

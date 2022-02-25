@@ -11,6 +11,7 @@ import Foundation
 class MenuController{
     let baseURL = URL(string: "http://localhost:8080/")!
     static let shared = MenuController()
+    let images = ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg"]
     static let orderUpdatedNotification =
     Notification.Name("MenuController.orderUpdated")
    var order = Order() {

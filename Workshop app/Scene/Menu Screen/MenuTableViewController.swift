@@ -76,6 +76,9 @@ class MenuTableViewController: UITableViewController {
         cell.textLabel?.text = menuPresenter.menuItems?[indexPath.row].name
         cell.detailTextLabel?.text = "$ \(String(format: "%.1f", menuPresenter.menuItems?[indexPath.row].price as! CVarArg))"
 
+        cell.imageView?.image = UIImage(named: MenuController.shared.images[(menuPresenter!.menuItems?[indexPath.row].id)! - 1])
+    
+    
         //cell.imageView?.kf.setImage(with: URL(string: imageURL))
         return cell
     }
