@@ -24,6 +24,10 @@
 		595A041927C8CB2C00ECC36E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A041827C8CB2C00ECC36E /* MenuController.swift */; };
 		A416CE96B2A050B8980ABDFD /* Pods_Workshop_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B399B0EC259439426BEE5D9 /* Pods_Workshop_app.framework */; };
 		E865C56B27C8F0F80045F093 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */; };
+		E865C56E27C91B140045F093 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56D27C91B140045F093 /* CategoriesPresenter.swift */; };
+		E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57027C91B4E0045F093 /* MenuPresenter.swift */; };
+		E865C57427C91B960045F093 /* MenuItemDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */; };
+		E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57627C91BC80045F093 /* OrdersPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		595A041B27C918F600ECC36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Workshop app/Info.plist"; sourceTree = "<group>"; };
 		9DE23014358B5C9BCC0E0DCB /* Pods-Workshop app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.debug.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.debug.xcconfig"; sourceTree = "<group>"; };
 		E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		E865C56D27C91B140045F093 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
+		E865C57027C91B4E0045F093 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailsPresenter.swift; sourceTree = "<group>"; };
+		E865C57627C91BC80045F093 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
 		F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.release.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,10 +168,10 @@
 		595A041527C8C82E00ECC36E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				595A041127C8C81200ECC36E /* CategoriesTableViewController.swift */,
-				595A041327C8C82800ECC36E /* OrdersTableViewController.swift */,
-				595A041627C8C98800ECC36E /* MenuTableViewController.swift */,
-				E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */,
+				E865C56C27C91AC30045F093 /* Categories Screen */,
+				E865C56F27C91B240045F093 /* Menu Screen */,
+				E865C57227C91B5B0045F093 /* Details Screen */,
+				E865C57527C91BA50045F093 /* Orders Screen */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -183,6 +191,42 @@
 				F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E865C56C27C91AC30045F093 /* Categories Screen */ = {
+			isa = PBXGroup;
+			children = (
+				595A041127C8C81200ECC36E /* CategoriesTableViewController.swift */,
+				E865C56D27C91B140045F093 /* CategoriesPresenter.swift */,
+			);
+			path = "Categories Screen";
+			sourceTree = "<group>";
+		};
+		E865C56F27C91B240045F093 /* Menu Screen */ = {
+			isa = PBXGroup;
+			children = (
+				595A041627C8C98800ECC36E /* MenuTableViewController.swift */,
+				E865C57027C91B4E0045F093 /* MenuPresenter.swift */,
+			);
+			path = "Menu Screen";
+			sourceTree = "<group>";
+		};
+		E865C57227C91B5B0045F093 /* Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */,
+				E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */,
+			);
+			path = "Details Screen";
+			sourceTree = "<group>";
+		};
+		E865C57527C91BA50045F093 /* Orders Screen */ = {
+			isa = PBXGroup;
+			children = (
+				595A041327C8C82800ECC36E /* OrdersTableViewController.swift */,
+				E865C57627C91BC80045F093 /* OrdersPresenter.swift */,
+			);
+			path = "Orders Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */,
 				595A041427C8C82800ECC36E /* OrdersTableViewController.swift in Sources */,
 				02979AA827C8184500C11252 /* ViewController.swift in Sources */,
 				595A041727C8C98800ECC36E /* MenuTableViewController.swift in Sources */,
@@ -308,10 +353,13 @@
 				595A040A27C8BE3A00ECC36E /* MenuResponse.swift in Sources */,
 				595A041027C8C63800ECC36E /* OrderResponse.swift in Sources */,
 				595A040E27C8C16100ECC36E /* Order.swift in Sources */,
+				E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */,
 				595A040C27C8BE8400ECC36E /* CategoriesResponse.swift in Sources */,
 				595A041227C8C81200ECC36E /* CategoriesTableViewController.swift in Sources */,
+				E865C57427C91B960045F093 /* MenuItemDetailsPresenter.swift in Sources */,
 				02979AAE27C8184500C11252 /* Workshop_app.xcdatamodeld in Sources */,
 				E865C56B27C8F0F80045F093 /* MenuItemDetailViewController.swift in Sources */,
+				E865C56E27C91B140045F093 /* CategoriesPresenter.swift in Sources */,
 				02979AA627C8184500C11252 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
