@@ -26,7 +26,7 @@
 		E865C56B27C8F0F80045F093 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */; };
 		E865C56E27C91B140045F093 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56D27C91B140045F093 /* CategoriesPresenter.swift */; };
 		E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57027C91B4E0045F093 /* MenuPresenter.swift */; };
-		E865C57427C91B960045F093 /* MenuItemDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */; };
+		E865C57427C91B960045F093 /* MenuDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */; };
 		E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57627C91BC80045F093 /* OrdersPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
 		E865C56D27C91B140045F093 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		E865C57027C91B4E0045F093 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
-		E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailsPresenter.swift; sourceTree = "<group>"; };
+		E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailsPresenter.swift; sourceTree = "<group>"; };
 		E865C57627C91BC80045F093 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
 		F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.release.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */,
-				E865C57327C91B960045F093 /* MenuItemDetailsPresenter.swift */,
+				E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */,
 			);
 			path = "Details Screen";
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 				E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */,
 				595A040C27C8BE8400ECC36E /* CategoriesResponse.swift in Sources */,
 				595A041227C8C81200ECC36E /* CategoriesTableViewController.swift in Sources */,
-				E865C57427C91B960045F093 /* MenuItemDetailsPresenter.swift in Sources */,
+				E865C57427C91B960045F093 /* MenuDetailsPresenter.swift in Sources */,
 				02979AAE27C8184500C11252 /* Workshop_app.xcdatamodeld in Sources */,
 				E865C56B27C8F0F80045F093 /* MenuItemDetailViewController.swift in Sources */,
 				E865C56E27C91B140045F093 /* CategoriesPresenter.swift in Sources */,

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol DetailsViewProtocol {
+    func updateUI()
+    
+}
+
 class MenuItemDetailViewController: UIViewController {
 
     @IBOutlet weak var addToOrderButton: UIButton!
@@ -15,11 +20,12 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    let menuItem: MenuItem
+    
+    var detailsPresenter: DetailsPresenterProtocol?
     
     init?(coder: NSCoder, menuItem: MenuItem) {
-        self.menuItem = menuItem
         super.init(coder: coder)
+        detailsPresenter = MenuDetailsPresenter(view: self, menuItem: menuItem)
     }
     
     required init?(coder: NSCoder) {
@@ -28,30 +34,11 @@ class MenuItemDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(menuItem)
         updateUI()
         // Do any additional setup after loading the view.
     }
     
-    func updateUI() {
-        nameLabel.text = menuItem.name
-        priceLabel.text = "$\(menuItem.price )"
-        detailTextLabel.text = menuItem.itemDescription
-        addToOrderButton.layer.cornerRadius = 20.0
-        
-        var imageURL = menuItem.imageURL
     
-        let index = imageURL.index(imageURL.endIndex, offsetBy: -4)
-        imageURL = String(imageURL[..<index])
-        print(imageURL)
-        let url = URL(string: String(imageURL))
-        fetchImage(url: url!)
-               { (image) in
-                guard let image = image else { return }
-                   self.imageView.image = image
-            }
-        
-    }
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0,
            usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1,
@@ -61,22 +48,22 @@ class MenuItemDetailViewController: UIViewController {
             self.addToOrderButton.transform =
                CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
-        MenuController.shared.order.menuItems.append(menuItem)
+        detailsPresenter?.addItemToOrder()
     }
      
-    func fetchImage(url: URL, completion: @escaping (UIImage?)
-       -> Void) {
-        let task = URLSession.shared.dataTask(with: url)
-           { (data, response, error) in
-            if let data = data,
-                let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
-            }
-        }
-        task.resume()
-    }
+//    func fetchImage(url: URL, completion: @escaping (UIImage?)
+//       -> Void) {
+//        let task = URLSession.shared.dataTask(with: url)
+//           { (data, response, error) in
+//            if let data = data,
+//                let image = UIImage(data: data) {
+//                completion(image)
+//            } else {
+//                completion(nil)
+//            }
+//        }
+//        task.resume()
+//    }
 
     /*
     // MARK: - Navigation
@@ -88,4 +75,26 @@ class MenuItemDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension MenuItemDetailViewController: DetailsViewProtocol {
+    func updateUI() {
+        nameLabel.text = detailsPresenter?.menuItem!.name
+            priceLabel.text = "$\(detailsPresenter!.menuItem!.price)"
+            detailTextLabel.text = detailsPresenter?.menuItem!.itemDescription
+            addToOrderButton.layer.cornerRadius = 20.0
+            
+//            var imageURL = detailsPresenter?.menuItem!.imageURL
+//
+//            let index = imageURL.index(imageURL.endIndex, offsetBy: -4)
+//            imageURL = String(imageURL[..<index])
+//            print(imageURL)
+//            let url = URL(string: String(imageURL))
+    //        fetchImage(url: url!)
+    //               { (image) in
+    //                guard let image = image else { return }
+    //                   self.imageView.image = image
+    //            }
+            
+        }
 }
