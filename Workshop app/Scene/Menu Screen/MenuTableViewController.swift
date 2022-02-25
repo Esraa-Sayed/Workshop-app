@@ -9,13 +9,24 @@
 import UIKit
 import Kingfisher
 
+protocol MenuViewProtocol {
+    func startIndicator()
+    func stopIndicator()
+    func updateUI(with menuItems: [MenuItem])
+    func displayError(_ error: Error, title: String)
+}
+
 class MenuTableViewController: UITableViewController {
     
-    let category: String
-    var menuItems = [MenuItem]()
+    
+    var indicator = UIActivityIndicatorView(style: .large)
+    var menuPresenter: MenuPresenterProtocol!
+    
     init?(coder: NSCoder, category: String) {
-        self.category = category
+        //menuPresenter.category = category
         super.init(coder: coder)
+        menuPresenter = MenuPresenter(view: self, category: category)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -25,33 +36,19 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MenuController.shared.fetchMenuItems(forCategory: category)
-        { (result) in
-            switch result {
-            case .success(let menuItems):
-                self.updateUI(with: menuItems ?? [])
-            case .failure(let error):
-                self.displayError(error, title: "Failed to Fetch Menu Items for \(self.category)")
-            }
-        }
+        initIndicator()
+        startIndicator()
+        
+        menuPresenter.fetchMenuItems()
+        
+        
     }
     
-    func updateUI(with menuItems: [MenuItem]) {
-        self.menuItems = menuItems
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.title = self.category.capitalized
-        }
-    }
     
-    func displayError(_ error: Error, title: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message:
-                error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style:
-                .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+    
+    func initIndicator() {
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
     }
     
     
@@ -64,7 +61,7 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return menuItems.count
+        return menuPresenter.menuItems?.count ?? 0
     }
     
     
@@ -72,12 +69,13 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         // Configure the cell...
-        var imageURL = menuItems[indexPath.row].imageURL
-        let index = imageURL.index(imageURL.endIndex, offsetBy: -4)
-        imageURL = String(imageURL[..<index])
-        print(imageURL)
-        cell.textLabel?.text = menuItems[indexPath.row].name
-        cell.detailTextLabel?.text = "$ \(String(menuItems[indexPath.row].price))"
+        //var imageURL = menuPresenter.menuItems?[indexPath.row].imageURL
+//        let index = imageURL?.index(imageURL?.endIndex!, offsetBy: -4)
+//        imageURL = String(imageURL[..<index])
+//        print(imageURL)
+        cell.textLabel?.text = menuPresenter.menuItems?[indexPath.row].name
+        cell.detailTextLabel?.text = "$ \(String(format: "%.1f", menuPresenter.menuItems?[indexPath.row].price as! CVarArg))"
+
         //cell.imageView?.kf.setImage(with: URL(string: imageURL))
         return cell
     }
@@ -89,9 +87,34 @@ class MenuTableViewController: UITableViewController {
                 return nil
         }
         
-        let menuItem = menuItems[indexPath.row]
-        return MenuItemDetailViewController(coder: coder, menuItem:
-            menuItem)
+        let menuItem = menuPresenter.menuItems?[indexPath.row]
+        return MenuItemDetailViewController(coder: coder, menuItem:menuItem!)
         
+    }
+}
+
+extension MenuTableViewController: MenuViewProtocol {
+    func startIndicator() {
+        indicator.startAnimating()
+    }
+    func stopIndicator() {
+        indicator.stopAnimating()
+    }
+    func updateUI(with menuItems: [MenuItem]) {
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.title = self.menuPresenter.category?.capitalized
+        }
+    }
+    
+    func displayError(_ error: Error, title: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message:
+                error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style:
+                .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
