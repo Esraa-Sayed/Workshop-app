@@ -7,27 +7,37 @@
 //
 
 import UIKit
-
-class OrdersTableViewController: UITableViewController {
+protocol OrdersTableViewControllerProtocol: class{
+     func setMinutesToPrepareOrder(minutes:Int)
+     func displayEstimatedTime(minutesToPrepare : Int)
+    func displayError(_ error: Error, title: String)
+}
+class OrdersTableViewController: UITableViewController,OrdersTableViewControllerProtocol {
     
     @IBOutlet weak var submitBtn: UIBarButtonItem!
     var minutesToPrepareOrder = 0
-    
+    var ordersPresenter:OrdersPresenter?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       NotificationCenter.default.addObserver(tableView!,
-              selector: #selector(UITableView.reloadData),
-              name: MenuController.orderUpdatedNotification, object: nil)
+        ordersPresenter = OrdersPresenter(view: self)
+        notify()
 
     }
+    
+    func notify() {
+        NotificationCenter.default.addObserver(tableView!,
+        selector: #selector(tableView.reloadData),
+        name: ordersPresenter?.getNotifyName(), object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isListEmpty()
         
     }
     func isListEmpty(){
-        if (MenuController.shared.order.menuItems.count == 0){
+        if (ordersPresenter?.getMenuItemsCount() == 0){
             submitBtn.isEnabled=false
             
         }
@@ -37,18 +47,14 @@ class OrdersTableViewController: UITableViewController {
     }
     @IBAction func SubmitPressed(_ sender: Any) {
         
-        let orderTotal =
-               MenuController.shared.order.menuItems.reduce(0.0)
-               { (result, menuItem) -> Double in
-                return result + menuItem.price
-            }
-            let formattedTotal = "$ \(String(orderTotal))"
+        let orderTotal = ordersPresenter?.getOrderTotal()
+            let formattedTotal = "$ \(orderTotal!)"
             let alertController = UIAlertController(title:
                "Confirm Order", message: "You are about to submit your order with a total of \(formattedTotal)",
                preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "Submit",
                style: .default, handler: { _ in
-                self.uploadOrder()
+                self.ordersPresenter?.uploadOrder()
             }))
             alertController.addAction(UIAlertAction(title: "Cancel",
                style: .cancel, handler: nil))
@@ -56,25 +62,11 @@ class OrdersTableViewController: UITableViewController {
         
     }
     
-    func uploadOrder() {
-        let menuIds = MenuController.shared.order.menuItems.map
-           { $0.id }
-        MenuController.shared.submitOrder(forMenuIDs: menuIds)
-           { (result) in
-            switch result {
-            case .success(let minutesToPrepare):
-                DispatchQueue.main.async {
-                    self.minutesToPrepareOrder = minutesToPrepare
-                    self.displayEstimatedTime(minutesToPrepare : minutesToPrepare)
-                }
-            case .failure(let error):
-                self.displayError(error, title: "Order Submission Failed")
-            }
-        }
+    func setMinutesToPrepareOrder(minutes:Int) {
+        self.minutesToPrepareOrder = minutes
     }
     func displayEstimatedTime(minutesToPrepare : Int){
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Order Confirmed", message:
+        let alert = UIAlertController(title: "Order Confirmed", message:
               "Thank you for your Order\nYour Estimated Time is \(minutesToPrepare) minutes", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss",
                                           style: .default, handler: { _ in
@@ -84,7 +76,6 @@ class OrdersTableViewController: UITableViewController {
                                          ))
             self.present(alert, animated: true, completion: nil)
         }
-    }
     
     func displayError(_ error: Error, title: String) {
         DispatchQueue.main.async {
