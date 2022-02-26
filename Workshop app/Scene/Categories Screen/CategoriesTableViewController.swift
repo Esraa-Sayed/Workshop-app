@@ -26,7 +26,7 @@ class CategoriesTableViewController: UITableViewController {
 
         initIndicator()
         startIndicator()
-        categoriesPresenter = CategoriesPresenter(view: self)
+        categoriesPresenter = CategoriesPresenter(view: self, networkService: MenuController.shared)
         
         categoriesPresenter.fetchCategoriesFromNetwork()
     }

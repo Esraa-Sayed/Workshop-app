@@ -25,7 +25,7 @@ class MenuTableViewController: UITableViewController {
     init?(coder: NSCoder, category: String) {
         //menuPresenter.category = category
         super.init(coder: coder)
-        menuPresenter = MenuPresenter(view: self, category: category)
+        menuPresenter = MenuPresenter(view: self, category: category, networkService: MenuController.shared)
         
     }
     

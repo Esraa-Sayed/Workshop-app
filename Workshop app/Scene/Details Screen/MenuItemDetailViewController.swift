@@ -25,7 +25,7 @@ class MenuItemDetailViewController: UIViewController {
     
     init?(coder: NSCoder, menuItem: MenuItem) {
         super.init(coder: coder)
-        detailsPresenter = MenuDetailsPresenter(view: self, menuItem: menuItem)
+        detailsPresenter = MenuDetailsPresenter(view: self, menuItem: menuItem, networkService: MenuController.shared)
     }
     
     required init?(coder: NSCoder) {

@@ -17,14 +17,16 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
     
     var categories: [String]!
     private weak var categoriesView: CategoriesViewProtocol!
+    let networkService: NetworkService!
     
     
-    init(view: CategoriesViewProtocol) {
+    init(view: CategoriesViewProtocol, networkService: NetworkService) {
         categoriesView = view
+        self.networkService = networkService
     }
     
     func fetchCategoriesFromNetwork() {
-        MenuController.shared.fetchCategories { [weak self] (result)  in
+        networkService.fetchCategories { [weak self] (result)  in
             
                 switch result {
                 case .success(let categories):

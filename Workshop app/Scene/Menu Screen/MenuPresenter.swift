@@ -19,14 +19,16 @@ class MenuPresenter: MenuPresenterProtocol {
     var menuItems: [MenuItem]?
     var category: String?
     var menuView: MenuViewProtocol?
+    let networkService: NetworkService!
     
-    init(view: MenuViewProtocol, category: String) {
+    init(view: MenuViewProtocol, category: String, networkService: NetworkService) {
         self.menuView = view
         self.category = category
+        self.networkService = networkService
     }
     
     func fetchMenuItems() {
-        MenuController.shared.fetchMenuItems(forCategory: category ?? "")
+        networkService.fetchMenuItems(forCategory: category ?? "")
         { [weak self] (result) in
             switch result {
             case .success(let menuItems):

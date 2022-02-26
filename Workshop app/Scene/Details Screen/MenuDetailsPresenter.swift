@@ -17,13 +17,15 @@ class MenuDetailsPresenter: DetailsPresenterProtocol {
 
     var menuItem: MenuItem?
     var detailsView: DetailsViewProtocol
+    var networkService: NetworkService!
         
-    init(view: DetailsViewProtocol, menuItem: MenuItem) {
+    init(view: DetailsViewProtocol, menuItem: MenuItem, networkService: NetworkService) {
         detailsView = view
         self.menuItem = menuItem
+        self.networkService = networkService
     }
     
     func addItemToOrder() {
-        MenuController.shared.order.menuItems.append(menuItem!)
+        networkService.order.menuItems.append(menuItem!)
     }
 }

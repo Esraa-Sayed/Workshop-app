@@ -11,35 +11,40 @@ protocol OrdersPresenterProtocol {
      func getNotifyName()->Notification.Name
      func getMenuItemsCount()->Int
      func getOrderTotal()->Double
-    func uploadOrder()
+     func uploadOrder()
 }
 class OrdersPresenter:OrdersPresenterProtocol {
     private weak var orderView: OrdersTableViewControllerProtocol!
-    private let orderTotal:Double =
-       MenuController.shared.order.menuItems.reduce(0.0)
-       { (result, menuItem) -> Double in
-        return result + menuItem.price
-    }
-    private var notify:Notification.Name = MenuController.orderUpdatedNotification
-    private var mapMenu:[Int] = MenuController.shared.order.menuItems.map
-    { $0.id }
-    init(view: OrdersTableViewControllerProtocol) {
+    
+    var networkService: NetworkService!
+    
+    private let orderTotal:Double
+    private var notify:Notification.Name
+    private var mapMenu:[Int]
+    
+    init(view: OrdersTableViewControllerProtocol, networkService: NetworkService) {
         orderView = view
+        self.networkService = networkService
+        orderTotal = self.networkService.order.menuItems.reduce(0.0){ (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
+        notify = MenuController.orderUpdatedNotification
+        mapMenu = self.networkService.order.menuItems.map{ $0.id }
     }
     func getNotifyName()->Notification.Name
     {
         return notify
     }
     func getMenuItemsCount()->Int{
-        return MenuController.shared.order.menuItems.count
+        return networkService.order.menuItems.count
     }
     func getOrderTotal()->Double{
         return orderTotal
     }
     func uploadOrder() {
-        let menuIds = MenuController.shared.order.menuItems.map
+        let menuIds = networkService.order.menuItems.map
         { $0.id }
-        MenuController.shared.submitOrder(forMenuIDs: menuIds)
+        networkService.submitOrder(forMenuIDs: menuIds)
            { (result) in
             switch result {
             case .success(let minutesToPrepare):

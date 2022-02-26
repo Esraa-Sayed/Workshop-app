@@ -20,7 +20,7 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ordersPresenter = OrdersPresenter(view: self)
+        ordersPresenter = OrdersPresenter(view: self, networkService: MenuController.shared)
         notify()
 
     }

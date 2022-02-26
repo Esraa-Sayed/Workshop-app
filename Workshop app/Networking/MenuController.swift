@@ -8,13 +8,26 @@
 
 import Foundation
 
-class MenuController{
+protocol NetworkService {
+    
+    typealias MinutesToPrepare = Int
+    var order: Order {get set}
+    static var orderUpdatedNotification: Notification.Name{get}
+    
+    func fetchCategories(completion: @escaping (Result<[String]?,Error>) -> Void)
+    func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem]?,Error>) -> Void)
+    func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<MinutesToPrepare, Error>) -> Void)
+    
+}
+
+class MenuController: NetworkService{
+    
     let baseURL = URL(string: "http://localhost:8080/")!
     static let shared = MenuController()
     let images = ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg"]
     static let orderUpdatedNotification =
     Notification.Name("MenuController.orderUpdated")
-   var order = Order() {
+    var order = Order() {
         didSet {
             NotificationCenter.default.post(name:
                MenuController.orderUpdatedNotification, object: nil)
@@ -75,7 +88,7 @@ class MenuController{
         task.resume()
     }
     
-    typealias MinutesToPrepare = Int
+    
     
     func submitOrder(forMenuIDs menuIDs: [Int], completion:
                      @escaping (Result<MinutesToPrepare, Error>) -> Void) {
