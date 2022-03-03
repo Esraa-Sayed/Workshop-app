@@ -23,12 +23,23 @@
 		595A041727C8C98800ECC36E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A041627C8C98800ECC36E /* MenuTableViewController.swift */; };
 		595A041927C8CB2C00ECC36E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A041827C8CB2C00ECC36E /* MenuController.swift */; };
 		A416CE96B2A050B8980ABDFD /* Pods_Workshop_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B399B0EC259439426BEE5D9 /* Pods_Workshop_app.framework */; };
+		E855002A27CA5CF200B91BE1 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855002927CA5CF200B91BE1 /* NetworkTest.swift */; };
 		E865C56B27C8F0F80045F093 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */; };
 		E865C56E27C91B140045F093 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C56D27C91B140045F093 /* CategoriesPresenter.swift */; };
 		E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57027C91B4E0045F093 /* MenuPresenter.swift */; };
 		E865C57427C91B960045F093 /* MenuDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */; };
 		E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57627C91BC80045F093 /* OrdersPresenter.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E855002C27CA5CF200B91BE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02979A9827C8184500C11252 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02979A9F27C8184500C11252;
+			remoteInfo = "Workshop app";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		02979AA027C8184500C11252 /* Workshop app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workshop app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +61,9 @@
 		595A041827C8CB2C00ECC36E /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		595A041B27C918F600ECC36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Workshop app/Info.plist"; sourceTree = "<group>"; };
 		9DE23014358B5C9BCC0E0DCB /* Pods-Workshop app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.debug.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.debug.xcconfig"; sourceTree = "<group>"; };
+		E855002727CA5CF100B91BE1 /* NetworkTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E855002927CA5CF200B91BE1 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
+		E855002B27CA5CF200B91BE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E865C56A27C8F0F80045F093 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
 		E865C56D27C91B140045F093 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		E865C57027C91B4E0045F093 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
@@ -67,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E855002427CA5CF100B91BE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -75,6 +96,7 @@
 			children = (
 				595A041B27C918F600ECC36E /* Info.plist */,
 				02979AA227C8184500C11252 /* Workshop app */,
+				E855002827CA5CF100B91BE1 /* NetworkTest */,
 				02979AA127C8184500C11252 /* Products */,
 				D553B4AE8E2655A08D33BE5F /* Pods */,
 				1BE8CD5DB3F7B9464FB039EC /* Frameworks */,
@@ -85,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				02979AA027C8184500C11252 /* Workshop app.app */,
+				E855002727CA5CF100B91BE1 /* NetworkTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +216,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E855002827CA5CF100B91BE1 /* NetworkTest */ = {
+			isa = PBXGroup;
+			children = (
+				E855002927CA5CF200B91BE1 /* NetworkTest.swift */,
+				E855002B27CA5CF200B91BE1 /* Info.plist */,
+			);
+			path = NetworkTest;
+			sourceTree = "<group>";
+		};
 		E865C56C27C91AC30045F093 /* Categories Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,18 +283,40 @@
 			productReference = 02979AA027C8184500C11252 /* Workshop app.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E855002627CA5CF100B91BE1 /* NetworkTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E855003027CA5CF200B91BE1 /* Build configuration list for PBXNativeTarget "NetworkTest" */;
+			buildPhases = (
+				E855002327CA5CF100B91BE1 /* Sources */,
+				E855002427CA5CF100B91BE1 /* Frameworks */,
+				E855002527CA5CF100B91BE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E855002D27CA5CF200B91BE1 /* PBXTargetDependency */,
+			);
+			name = NetworkTest;
+			productName = NetworkTest;
+			productReference = E855002727CA5CF100B91BE1 /* NetworkTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		02979A9827C8184500C11252 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = esraa;
 				TargetAttributes = {
 					02979A9F27C8184500C11252 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					E855002627CA5CF100B91BE1 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 02979A9F27C8184500C11252;
 					};
 				};
 			};
@@ -280,6 +334,7 @@
 			projectRoot = "";
 			targets = (
 				02979A9F27C8184500C11252 /* Workshop app */,
+				E855002627CA5CF100B91BE1 /* NetworkTest */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +347,13 @@
 				02979AB327C8184700C11252 /* LaunchScreen.storyboard in Resources */,
 				02979AB027C8184700C11252 /* Assets.xcassets in Resources */,
 				02979AAB27C8184500C11252 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E855002527CA5CF100B91BE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +426,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E855002327CA5CF100B91BE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E855002A27CA5CF200B91BE1 /* NetworkTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E855002D27CA5CF200B91BE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02979A9F27C8184500C11252 /* Workshop app */;
+			targetProxy = E855002C27CA5CF200B91BE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		02979AA927C8184500C11252 /* Main.storyboard */ = {
@@ -536,6 +614,46 @@
 			};
 			name = Release;
 		};
+		E855002E27CA5CF200B91BE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NetworkTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "iOS-Swift.NetworkTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Workshop app.app/Workshop app";
+			};
+			name = Debug;
+		};
+		E855002F27CA5CF200B91BE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NetworkTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "iOS-Swift.NetworkTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Workshop app.app/Workshop app";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +671,15 @@
 			buildConfigurations = (
 				02979AB827C8184700C11252 /* Debug */,
 				02979AB927C8184700C11252 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E855003027CA5CF200B91BE1 /* Build configuration list for PBXNativeTarget "NetworkTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E855002E27CA5CF200B91BE1 /* Debug */,
+				E855002F27CA5CF200B91BE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

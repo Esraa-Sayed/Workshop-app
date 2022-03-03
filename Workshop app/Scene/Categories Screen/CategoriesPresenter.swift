@@ -27,7 +27,6 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
     
     func fetchCategoriesFromNetwork() {
         networkService.fetchCategories { [weak self] (result)  in
-            
                 switch result {
                 case .success(let categories):
                     self?.categories = categories

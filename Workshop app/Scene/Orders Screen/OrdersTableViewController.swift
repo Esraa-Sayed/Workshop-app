@@ -19,7 +19,6 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
     var ordersPresenter:OrdersPresenter?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ordersPresenter = OrdersPresenter(view: self, networkService: MenuController.shared)
         notify()
 
