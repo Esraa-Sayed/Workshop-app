@@ -21,6 +21,7 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var addButton: UIButton!
     var detailsPresenter: DetailsPresenterProtocol?
     
     override func viewDidLoad() {

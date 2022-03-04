@@ -14,6 +14,7 @@ protocol OrdersTableViewControllerProtocol: class{
 }
 class OrdersTableViewController: UITableViewController,OrdersTableViewControllerProtocol {
     
+    @IBOutlet weak var submitButton: UIBarButtonItem!
     @IBOutlet weak var submitBtn: UIBarButtonItem!
     var minutesToPrepareOrder = 0
     var ordersPresenter:OrdersPresenter?
