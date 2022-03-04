@@ -50,31 +50,6 @@ class MenuItemDetailViewController: UIViewController {
         }, completion: nil)
         detailsPresenter?.addItemToOrder()
     }
-     
-//    func fetchImage(url: URL, completion: @escaping (UIImage?)
-//       -> Void) {
-//        let task = URLSession.shared.dataTask(with: url)
-//           { (data, response, error) in
-//            if let data = data,
-//                let image = UIImage(data: data) {
-//                completion(image)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//        task.resume()
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension MenuItemDetailViewController: DetailsViewProtocol {
@@ -85,17 +60,5 @@ extension MenuItemDetailViewController: DetailsViewProtocol {
             addToOrderButton.layer.cornerRadius = 20.0
         print(MenuController.shared.images[detailsPresenter!.menuItem!.id - 1])
         imageView.image =  UIImage(named: MenuController.shared.images[detailsPresenter!.menuItem!.id - 1])
-//            var imageURL = detailsPresenter?.menuItem!.imageURL
-//
-//            let index = imageURL.index(imageURL.endIndex, offsetBy: -4)
-//            imageURL = String(imageURL[..<index])
-//            print(imageURL)
-//            let url = URL(string: String(imageURL))
-    //        fetchImage(url: url!)
-    //               { (image) in
-    //                guard let image = image else { return }
-    //                   self.imageView.image = image
-    //            }
-            
-        }
+    }
 }

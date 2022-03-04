@@ -19,7 +19,7 @@ class MenuDetailsPresenter: DetailsPresenterProtocol {
     var detailsView: DetailsViewProtocol
     var networkService: NetworkService!
         
-    init(view: DetailsViewProtocol, menuItem: MenuItem, networkService: NetworkService) {
+    init(view: DetailsViewProtocol, menuItem: MenuItem, networkService: NetworkService = MenuController.shared) {
         detailsView = view
         self.menuItem = menuItem
         self.networkService = networkService

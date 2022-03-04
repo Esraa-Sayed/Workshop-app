@@ -67,17 +67,16 @@ class CategoriesTableViewController: UITableViewController {
     }
     
     
-    
-    @IBSegueAction func showMenu(_ coder: NSCoder, sender: Any?) -> MenuTableViewController? {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell, let indexPath =
-               tableView.indexPath(for: cell) else {
-                return nil
-            }
-        
-            let category = categoriesPresenter.categories[indexPath.row]
-            return MenuTableViewController(coder: coder, category:
-               category)
+           tableView.indexPath(for: cell) else {
+            return nil
+        }
+    
+        let cad
     }
+    
+       
 }
 
 extension CategoriesTableViewController: CategoriesViewProtocol {
