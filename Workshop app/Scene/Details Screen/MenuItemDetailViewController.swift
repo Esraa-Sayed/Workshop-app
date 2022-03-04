@@ -23,15 +23,6 @@ class MenuItemDetailViewController: UIViewController {
     
     var detailsPresenter: DetailsPresenterProtocol?
     
-    init?(coder: NSCoder, menuItem: MenuItem) {
-        super.init(coder: coder)
-        detailsPresenter = MenuDetailsPresenter(view: self, menuItem: menuItem, networkService: MenuController.shared)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()

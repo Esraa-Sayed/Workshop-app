@@ -68,12 +68,11 @@ class CategoriesTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cell = sender as? UITableViewCell, let indexPath =
-           tableView.indexPath(for: cell) else {
-            return nil
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+                   let destVC = segue.destination as! MenuTableViewController
+            let menuPresenter = MenuPresenter (view: destVC, category: categoriesPresenter.categories[indexPath.row])
+            destVC.menuPresenter = menuPresenter
         }
-    
-        let cad
     }
     
        
