@@ -14,14 +14,14 @@ class TestDetailsViewController: XCTestCase {
     private var sut: MenuItemDetailViewController!
     private var menuItem: MenuItem!
     
-    override func setUpWithError() throws {
+    override func setUp(){
         menuItem = MenuItem(category: "Desserts", id: 1, imageURL: "image1", name: "Konafa", itemDescription: "Description", price: 25)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: "MenuItemDetailViewController") as? MenuItemDetailViewController
         sut.detailsPresenter = MockDetailsPresenter()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown(){
         
     }
 

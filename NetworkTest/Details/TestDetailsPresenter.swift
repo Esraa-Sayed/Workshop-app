@@ -16,14 +16,14 @@ class TestDetailsPresenter: XCTestCase {
     private var menuItem: MenuItem!
     
     
-    override func setUpWithError() throws {
+    override func setUp(){
         menuItem = MenuItem(category: "Desserts", id: 1, imageURL: "image1", name: "Konafa", itemDescription: "Description", price: 25)
         detailsView = MockDetailsView()
         sut = MenuDetailsPresenter(view: detailsView, menuItem: menuItem)
         
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown(){
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
