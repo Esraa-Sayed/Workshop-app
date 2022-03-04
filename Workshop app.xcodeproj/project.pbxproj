@@ -30,6 +30,7 @@
 		59AD166B27D2728600040FAD /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = 59AD166527D2728600040FAD /* Error.json */; };
 		59AD166D27D2731400040FAD /* Menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 59AD166C27D2731400040FAD /* Menu.json */; };
 		59AD166F27D2736A00040FAD /* Order.json in Resources */ = {isa = PBXBuildFile; fileRef = 59AD166E27D2736A00040FAD /* Order.json */; };
+		59AD167427D28D2900040FAD /* MockMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD167327D28D2900040FAD /* MockMenuView.swift */; };
 		A416CE96B2A050B8980ABDFD /* Pods_Workshop_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B399B0EC259439426BEE5D9 /* Pods_Workshop_app.framework */; };
 		E85DC0F227D1265400E6679C /* TestMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DC0F127D1265400E6679C /* TestMenuPresenter.swift */; };
 		E85DC0F427D1266900E6679C /* TestDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DC0F327D1266900E6679C /* TestDetailsPresenter.swift */; };
@@ -79,6 +80,7 @@
 		59AD166527D2728600040FAD /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		59AD166C27D2731400040FAD /* Menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Menu.json; sourceTree = "<group>"; };
 		59AD166E27D2736A00040FAD /* Order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order.json; sourceTree = "<group>"; };
+		59AD167327D28D2900040FAD /* MockMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenuView.swift; sourceTree = "<group>"; };
 		9DE23014358B5C9BCC0E0DCB /* Pods-Workshop app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.debug.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.debug.xcconfig"; sourceTree = "<group>"; };
 		E855002727CA5CF100B91BE1 /* NetworkTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E855002B27CA5CF200B91BE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				02E4393B27D2C63000DF2DE2 /* Order */,
 				02E4393827D2872D00DF2DE2 /* Network */,
 				59AD166327D2728600040FAD /* JSON */,
+				59AD167527D28D2F00040FAD /* Menu */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -289,6 +292,14 @@
 			children = (
 				E85DC0F127D1265400E6679C /* TestMenuPresenter.swift */,
 				02E4393627D2788200DF2DE2 /* TestMenuController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		59AD167527D28D2F00040FAD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				59AD167327D28D2900040FAD /* MockMenuView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -529,6 +540,7 @@
 				02E4393A27D2875100DF2DE2 /* mocNetworkManager.swift in Sources */,
 				E85DC0F227D1265400E6679C /* TestMenuPresenter.swift in Sources */,
 				02E4393527D2782C00DF2DE2 /* TestOrderController.swift in Sources */,
+				59AD167427D28D2900040FAD /* MockMenuView.swift in Sources */,
 				E85DC0F627D1267F00E6679C /* TestOrderPresenter.swift in Sources */,
 				02E4393D27D2C6DA00DF2DE2 /* MockOrderView.swift in Sources */,
 			);

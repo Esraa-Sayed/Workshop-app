@@ -33,11 +33,12 @@ class MenuPresenter: MenuPresenterProtocol {
             switch result {
             case .success(let menuItems):
                 self?.menuItems = menuItems
+                print(menuItems)
                 DispatchQueue.main.async {
                     self?.menuView!.updateUI(with: menuItems ?? [])
                 }
             case .failure(let error):
-                self?.menuView!.displayError(error, title: "Failed to Fetch Menu Items for \(self?.category)")
+                self?.menuView!.displayError(error.localizedDescription, title: "Failed to Fetch Menu Items for \(self?.category)")
             }
             
             DispatchQueue.main.async {

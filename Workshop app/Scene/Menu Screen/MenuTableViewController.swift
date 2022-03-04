@@ -13,14 +13,14 @@ protocol MenuViewProtocol {
     func startIndicator()
     func stopIndicator()
     func updateUI(with menuItems: [MenuItem])
-    func displayError(_ error: Error, title: String)
+    func displayError(_ error: String, title: String)
 }
 
 class MenuTableViewController: UITableViewController {
     
     
     var indicator = UIActivityIndicatorView(style: .large)
-    var menuPresenter: MenuPresenterProtocol!
+    var menuPresenter: MenuPresenterProtocol?
 
     
     override func viewDidLoad() {
@@ -28,8 +28,9 @@ class MenuTableViewController: UITableViewController {
         
         initIndicator()
         startIndicator()
+    
         
-        menuPresenter.fetchMenuItems()
+        menuPresenter?.fetchMenuItems()
         
         
     }
@@ -51,7 +52,7 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return menuPresenter.menuItems?.count ?? 0
+        return menuPresenter?.menuItems?.count ?? 0
     }
     
     
@@ -63,8 +64,8 @@ class MenuTableViewController: UITableViewController {
 //        let index = imageURL?.index(imageURL?.endIndex!, offsetBy: -4)
 //        imageURL = String(imageURL[..<index])
 //        print(imageURL)
-        cell.textLabel?.text = menuPresenter.menuItems?[indexPath.row].name
-        cell.detailTextLabel?.text = "$ \(String(format: "%.1f", menuPresenter.menuItems?[indexPath.row].price as! CVarArg))"
+        cell.textLabel?.text = menuPresenter?.menuItems?[indexPath.row].name
+        cell.detailTextLabel?.text = "$ \(String(format: "%.1f", menuPresenter?.menuItems?[indexPath.row].price as! CVarArg))"
 
         cell.imageView?.image = UIImage(named: MenuController.shared.images[(menuPresenter!.menuItems?[indexPath.row].id)! - 1])
     
@@ -73,12 +74,11 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
                    let destVC = segue.destination as! MenuItemDetailViewController
             
-            let menuItem = menuPresenter.menuItems?[indexPath.row]
+            let menuItem = menuPresenter?.menuItems?[indexPath.row]
     
             let menuDetailsPresenter = MenuDetailsPresenter (view: destVC, menuItem: menuItem!)
 
@@ -99,14 +99,14 @@ extension MenuTableViewController: MenuViewProtocol {
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.title = self.menuPresenter.category?.capitalized
+            self.title = self.menuPresenter?.category?.capitalized
         }
     }
     
-    func displayError(_ error: Error, title: String) {
+    func displayError(_ error: String, title: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message:
-                error.localizedDescription, preferredStyle: .alert)
+                error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style:
                 .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
