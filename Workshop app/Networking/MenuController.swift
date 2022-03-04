@@ -13,7 +13,6 @@ protocol NetworkService {
     typealias MinutesToPrepare = Int
     var order: Order {get set}
     static var orderUpdatedNotification: Notification.Name{get}
-    
     func fetchCategories(completion: @escaping (Result<[String]?,Error>) -> Void)
     func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem]?,Error>) -> Void)
     func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<MinutesToPrepare, Error>) -> Void)

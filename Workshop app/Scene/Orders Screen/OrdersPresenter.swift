@@ -14,15 +14,15 @@ protocol OrdersPresenterProtocol {
      func uploadOrder()
 }
 class OrdersPresenter:OrdersPresenterProtocol {
-    private weak var orderView: OrdersTableViewControllerProtocol!
+   var orderView: OrdersTableViewControllerProtocol!
     
     var networkService: NetworkService!
-    
+    var minutesToPrepare:Int!
     private let orderTotal:Double
     private var notify:Notification.Name
     private var mapMenu:[Int]
     
-    init(view: OrdersTableViewControllerProtocol, networkService: NetworkService) {
+    init(view: OrdersTableViewControllerProtocol, networkService: NetworkService = MenuController()) {
         orderView = view
         self.networkService = networkService
         orderTotal = self.networkService.order.menuItems.reduce(0.0){ (result, menuItem) -> Double in
@@ -49,6 +49,7 @@ class OrdersPresenter:OrdersPresenterProtocol {
             switch result {
             case .success(let minutesToPrepare):
                 DispatchQueue.main.async {
+                    self.minutesToPrepare = minutesToPrepare
                     self.orderView.setMinutesToPrepareOrder(minutes: minutesToPrepare)
                    self.orderView.displayEstimatedTime(minutesToPrepare: minutesToPrepare)
                 }
@@ -60,49 +61,4 @@ class OrdersPresenter:OrdersPresenterProtocol {
     
     
 }
-/*
 
- import Foundation
-
- protocol CategoriesPresenterProtocol {
-     var categories: [String]! {get set}
-     func fetchCategoriesFromNetwork()
- }
-
- class CategoriesPresenter: CategoriesPresenterProtocol {
-     
-     var categories: [String]!
-     private weak var categoriesView: CategoriesViewProtocol!
-     
-     
-     init(view: CategoriesViewProtocol) {
-         categoriesView = view
-     }
-     
-     func fetchCategoriesFromNetwork() {
-         MenuController.shared.fetchCategories { [weak self] (result)  in
-             
-                 switch result {
-                 case .success(let categories):
-                     self?.categories = categories
-                     DispatchQueue.main.async {
-                         self?.categoriesView.updateUI(with: categories ?? [])
-                     }
-                 case .failure(let error):
-                     DispatchQueue.main.async {
-                         self?.categoriesView.displayError(error,
-                                                       title: "Failed to Fetch Categories")
-                     }
-                 }
-                 DispatchQueue.main.async {
-                     self?.categoriesView.stopIndicator()
-                 }
-             }
-         }
-     
-     
-     
-     
- }
-
- */
