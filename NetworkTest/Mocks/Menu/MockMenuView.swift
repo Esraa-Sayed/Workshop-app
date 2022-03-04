@@ -25,8 +25,8 @@ class MockMenuView: MenuViewProtocol {
         isUIUpdated = true
     }
     
-    func displayError(_ error: Error, title: String) {
-        print("\(title) : \(error.localizedDescription)")
+    func displayError(_ error: String, title: String) {
+        print("\(title) : \(error)")
     }
     
    

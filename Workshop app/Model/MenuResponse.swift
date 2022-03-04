@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct MenuResponse: Codable {
-    let items: [MenuItem]
+struct MenuResponse: Codable ,Equatable {
+    var items: [MenuItem]
 }
 
 // MARK: - Item
-struct MenuItem: Codable {
-    let category: String
-    let id: Int
-    let imageURL: String
-    let name, itemDescription: String
-    let price: Double
+struct MenuItem: Codable , Equatable{
+    var category: String
+    var id: Int
+    var imageURL: String
+    var name, itemDescription: String
+    var price: Double
 
     enum CodingKeys: String, CodingKey {
         case category, id

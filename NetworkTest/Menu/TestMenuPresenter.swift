@@ -12,29 +12,67 @@ class TestMenuPresenter: XCTestCase {
 
     private var sut: MenuPresenter!
     private var menuView: MockMenuView!
-    
-    
+  
     override func setUp(){
         super.setUp()
         menuView = MockMenuView()
-        sut = MenuPresenter(view: menuView, category: <#T##String#>, networkService: <#T##NetworkService#>)
-        CategoryPresenter(networkManager: MockNetworkManager(fileName: "Categories"), view: categoryView)
+        sut = MenuPresenter(view: menuView, category: "entrees", networkService: MockNetworkManager(fileName: "Menu"))
+    
     }
 
     override func tearDown(){
+        sut = nil
+        menuView = nil
+        super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testSut_whenInitCalled_MenuViewIsSet() {
+        
+        // Then
+        XCTAssertNotNil(sut.menuView)
     }
+    func testSut_whenFetchMenuItemsCalled_menuItemsAreFilled() {
+                
+        // When
+        sut.fetchMenuItems()
+        // Then
+        XCTAssertNotEqual(sut.menuItems, [])
+    }
+    
+    func testSut_FetchMenuItemsCalled_correctMenuItemIsReturned() {
+        
+        // Given
+        sut.fetchMenuItems()
+        
+        // When
+        let firstMenuItem = sut.menuItems?.first?.name
+        
+        // Then
+        XCTAssertEqual(firstMenuItem, "Spaghetti and Meatballs")
+    }
+    
+    func testSut_whenFetchMenuItemsCalled_correctMenuItemsCountReturned() {
+        sut.fetchMenuItems()
+       
+        // When
+        let menuListCount = sut.menuItems?.count
+        
+        // Then
+        XCTAssertEqual(menuListCount, 6)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    }
+    
+    func testSut_whenGetCategoriesCalledWithFailure_categoriesStillEmpty() {
+        // Given
+        sut = MenuPresenter(view: menuView, category: "entrees", networkService: MockNetworkManager(fileName: "Error"))
+        
+        // Then
+        sut.fetchMenuItems()
+        
+        // Then
+        XCTAssertNil(sut.menuItems)
+
     }
 
 }
