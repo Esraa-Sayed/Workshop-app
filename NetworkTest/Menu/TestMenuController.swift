@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Workshop_app
 
 class TestMenuController: XCTestCase {
 

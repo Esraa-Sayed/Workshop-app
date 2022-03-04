@@ -5,13 +5,20 @@
 //  Created by Youssef on 3/3/22.
 //  Copyright © 2022 esraa. All rights reserved.
 //
-
 import XCTest
+@testable import Workshop_app
 
-class TestMenu: XCTestCase {
+class TestMenuPresenter: XCTestCase {
 
+    private var sut: MenuPresenter!
+    private var menuView: MockMenuView!
+    
+    
     override func setUp(){
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        menuView = MockMenuView()
+        sut = MenuPresenter(view: menuView, category: <#T##String#>, networkService: <#T##NetworkService#>)
+        CategoryPresenter(networkManager: MockNetworkManager(fileName: "Categories"), view: categoryView)
     }
 
     override func tearDown(){
