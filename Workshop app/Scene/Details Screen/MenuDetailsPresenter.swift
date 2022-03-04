@@ -10,7 +10,7 @@ import Foundation
 
 protocol DetailsPresenterProtocol {
     var menuItem: MenuItem? {get set}
-    func addItemToOrder()
+    func addItemToOrder() -> MenuItem
 }
 
 class MenuDetailsPresenter: DetailsPresenterProtocol {
@@ -25,7 +25,8 @@ class MenuDetailsPresenter: DetailsPresenterProtocol {
         self.networkService = networkService
     }
     
-    func addItemToOrder() {
+    func addItemToOrder() -> MenuItem{
         networkService.order.menuItems.append(menuItem!)
+        return networkService.order.menuItems.last!
     }
 }

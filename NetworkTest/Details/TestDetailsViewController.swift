@@ -14,15 +14,18 @@ class TestDetailsViewController: XCTestCase {
     private var sut: MenuItemDetailViewController!
     private var menuItem: MenuItem!
     
+    
     override func setUp(){
-        menuItem = MenuItem(category: "Desserts", id: 1, imageURL: "image1", name: "Konafa", itemDescription: "Description", price: 25)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewController(identifier: "MenuItemDetailViewController") as? MenuItemDetailViewController
+        sut = storyboard.instantiateViewController(identifier: "MenuItemDetailViewController")
         sut.detailsPresenter = MockDetailsPresenter()
+        let _ = self.sut.view
     }
 
     override func tearDown(){
-        
+        sut = nil
+        menuItem = nil
     }
 
     func testSut_whenInitCalled_detailsPresenterIsSet() throws {
@@ -31,23 +34,30 @@ class TestDetailsViewController: XCTestCase {
     
     func testSut_whenViewIsLoaded_nameLabelIsSet() throws {
         sut.loadViewIfNeeded()
-        XCTAssert(sut.nameLabel.text == menuItem.name)
+        let text = sut.nameLabel.text
+        XCTAssert(text == sut.detailsPresenter?.menuItem?.name)
     }
-//    
-//    func testSut_whenAddIsTapped_itemIsAddedToOrder() throws {
-//        sut.orderButtonTapped(<#UIButton#>)
-//        RunLoop.current.run(until: Date())
-//        XCTAssert(sut.detailsPresenter?.menuItem?.id == menuItem.id)
-//    }
+    
+    func testSut_whenAddIsTapped_itemIsAddedToOrder() throws {
+        sut.loadViewIfNeeded()
+        sut.addButton.sendActions(for: .touchUpInside)
+        RunLoop.current.run(until: Date())
+        XCTAssert(sut.detailsPresenter?.menuItem?.id == sut.detailsPresenter?.addItemToOrder().id)
+    }
 }
 
 
 class MockDetailsPresenter: DetailsPresenterProtocol {
     var menuItem: MenuItem?
+    var networkService: NetworkService!
     
-    
-    func addItemToOrder() {
+    init(networkService: NetworkService = MenuController.shared) {
+        menuItem = MenuItem(category: "Desserts", id: 1, imageURL: "image1", name: "Konafa", itemDescription: "Description", price: 25)
+        self.networkService = networkService
     }
     
-    
+    func addItemToOrder() -> MenuItem {
+        self.networkService.order.menuItems.append(menuItem!)
+        return self.networkService.order.menuItems.last!
+    }
 }
