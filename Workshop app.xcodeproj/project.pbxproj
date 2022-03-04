@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		02979AA427C8184500C11252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02979AA327C8184500C11252 /* AppDelegate.swift */; };
 		02979AA627C8184500C11252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02979AA527C8184500C11252 /* SceneDelegate.swift */; };
-		02979AA827C8184500C11252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02979AA727C8184500C11252 /* ViewController.swift */; };
 		02979AAB27C8184500C11252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02979AA927C8184500C11252 /* Main.storyboard */; };
 		02979AAE27C8184500C11252 /* Workshop_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02979AAC27C8184500C11252 /* Workshop_app.xcdatamodeld */; };
 		02979AB027C8184700C11252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02979AAF27C8184700C11252 /* Assets.xcassets */; };
@@ -17,6 +16,8 @@
 		02E4393527D2782C00DF2DE2 /* TestOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4393427D2782C00DF2DE2 /* TestOrderController.swift */; };
 		02E4393727D2788200DF2DE2 /* TestMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4393627D2788200DF2DE2 /* TestMenuController.swift */; };
 		02E4393A27D2875100DF2DE2 /* mocNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4393927D2875100DF2DE2 /* mocNetworkManager.swift */; };
+		02E4393D27D2C6DA00DF2DE2 /* MockOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4393C27D2C6DA00DF2DE2 /* MockOrderView.swift */; };
+		02E4393F27D2C96000DF2DE2 /* MockOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4393E27D2C96000DF2DE2 /* MockOrderPresenter.swift */; };
 		595A040A27C8BE3A00ECC36E /* MenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A040927C8BE3A00ECC36E /* MenuResponse.swift */; };
 		595A040C27C8BE8400ECC36E /* CategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A040B27C8BE8400ECC36E /* CategoriesResponse.swift */; };
 		595A040E27C8C16100ECC36E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A040D27C8C16100ECC36E /* Order.swift */; };
@@ -55,7 +56,6 @@
 		02979AA027C8184500C11252 /* Workshop app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workshop app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02979AA327C8184500C11252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02979AA527C8184500C11252 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02979AA727C8184500C11252 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		02979AAA27C8184500C11252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02979AAD27C8184500C11252 /* Workshop_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workshop_app.xcdatamodel; sourceTree = "<group>"; };
 		02979AAF27C8184700C11252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +63,8 @@
 		02E4393427D2782C00DF2DE2 /* TestOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOrderController.swift; sourceTree = "<group>"; };
 		02E4393627D2788200DF2DE2 /* TestMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMenuController.swift; sourceTree = "<group>"; };
 		02E4393927D2875100DF2DE2 /* mocNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mocNetworkManager.swift; sourceTree = "<group>"; };
+		02E4393C27D2C6DA00DF2DE2 /* MockOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderView.swift; sourceTree = "<group>"; };
+		02E4393E27D2C96000DF2DE2 /* MockOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderPresenter.swift; sourceTree = "<group>"; };
 		3B399B0EC259439426BEE5D9 /* Pods_Workshop_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshop_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A040927C8BE3A00ECC36E /* MenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponse.swift; sourceTree = "<group>"; };
 		595A040B27C8BE8400ECC36E /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
@@ -141,7 +143,6 @@
 				02979ABC27C81AE000C11252 /* Configuration */,
 				02979ABE27C81B2200C11252 /* Core */,
 				02979ABD27C81AFF00C11252 /* Resources */,
-				02979AA727C8184500C11252 /* ViewController.swift */,
 				595A041527C8C82E00ECC36E /* Scene */,
 				595A041A27C8CB2F00ECC36E /* Networking */,
 			);
@@ -208,6 +209,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		02E4393B27D2C63000DF2DE2 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				02E4393C27D2C6DA00DF2DE2 /* MockOrderView.swift */,
+				02E4393E27D2C96000DF2DE2 /* MockOrderPresenter.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		1BE8CD5DB3F7B9464FB039EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 		59AD165E27D2728600040FAD /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				02E4393B27D2C63000DF2DE2 /* Order */,
 				02E4393827D2872D00DF2DE2 /* Network */,
 				59AD166327D2728600040FAD /* JSON */,
 			);
@@ -490,7 +501,6 @@
 			files = (
 				E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */,
 				595A041427C8C82800ECC36E /* OrdersTableViewController.swift in Sources */,
-				02979AA827C8184500C11252 /* ViewController.swift in Sources */,
 				595A041727C8C98800ECC36E /* MenuTableViewController.swift in Sources */,
 				02979AA427C8184500C11252 /* AppDelegate.swift in Sources */,
 				595A041927C8CB2C00ECC36E /* MenuController.swift in Sources */,
@@ -515,10 +525,12 @@
 				02E4393727D2788200DF2DE2 /* TestMenuController.swift in Sources */,
 				E8618BAC27D244700010EE92 /* TestDetailsViewController.swift in Sources */,
 				E85DC0F427D1266900E6679C /* TestDetailsPresenter.swift in Sources */,
+				02E4393F27D2C96000DF2DE2 /* MockOrderPresenter.swift in Sources */,
 				02E4393A27D2875100DF2DE2 /* mocNetworkManager.swift in Sources */,
 				E85DC0F227D1265400E6679C /* TestMenuPresenter.swift in Sources */,
 				02E4393527D2782C00DF2DE2 /* TestOrderController.swift in Sources */,
 				E85DC0F627D1267F00E6679C /* TestOrderPresenter.swift in Sources */,
+				02E4393D27D2C6DA00DF2DE2 /* MockOrderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

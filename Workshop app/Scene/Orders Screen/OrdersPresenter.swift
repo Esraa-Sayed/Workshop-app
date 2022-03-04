@@ -11,17 +11,17 @@ protocol OrdersPresenterProtocol {
      func getNotifyName()->Notification.Name
      func getMenuItemsCount()->Int
      func getOrderTotal()->Double
-     func uploadOrder()
+     func uploadOrder(menuIds:[Int])
 }
 class OrdersPresenter:OrdersPresenterProtocol {
    var orderView: OrdersTableViewControllerProtocol!
     
     var networkService: NetworkService!
     var minutesToPrepare:Int!
-    private let orderTotal:Double
-    private var notify:Notification.Name
+    private let orderTotal:Double?
+    private var notify:Notification.Name?
     private var mapMenu:[Int]
-    
+    var ids:[Int] = []
     init(view: OrdersTableViewControllerProtocol, networkService: NetworkService = MenuController()) {
         orderView = view
         self.networkService = networkService
@@ -30,26 +30,32 @@ class OrdersPresenter:OrdersPresenterProtocol {
         }
         notify = MenuController.orderUpdatedNotification
         mapMenu = self.networkService.order.menuItems.map{ $0.id }
+        ids = networkService.order.menuItems.map
+        { $0.id }
     }
     func getNotifyName()->Notification.Name
     {
-        return notify
+        return notify!
     }
     func getMenuItemsCount()->Int{
         return networkService.order.menuItems.count
     }
     func getOrderTotal()->Double{
-        return orderTotal
+        return orderTotal!
     }
-    func uploadOrder() {
-        let menuIds = networkService.order.menuItems.map
-        { $0.id }
-        networkService.submitOrder(forMenuIDs: menuIds)
+    func uploadOrder( menuIds: [Int] = []){
+        
+        if(menuIds != [])
+        {
+            ids = menuIds
+        }
+        networkService.submitOrder(forMenuIDs: ids)
            { (result) in
             switch result {
             case .success(let minutesToPrepare):
+                self.minutesToPrepare = minutesToPrepare
                 DispatchQueue.main.async {
-                    self.minutesToPrepare = minutesToPrepare
+                   
                     self.orderView.setMinutesToPrepareOrder(minutes: minutesToPrepare)
                    self.orderView.displayEstimatedTime(minutesToPrepare: minutesToPrepare)
                 }

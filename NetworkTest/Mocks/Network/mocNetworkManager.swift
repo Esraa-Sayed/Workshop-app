@@ -26,14 +26,14 @@ class MockNetworkManager: NetworkService {
     func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem]?, Error>) -> Void) {
     }
     
-    func submitOrder<T>(forMenuIDs menuIDs: [Int], completion: @escaping (Result<T, Error>) -> Void) where T : Decodable  {
+    func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<MinutesToPrepare, Error>) -> Void) {
         guard let data = data(in: fileName, extension: "json") else {
                    assertionFailure("Unable to find the file with name: \(fileName ?? "")")
                    return
                }
                
                do {
-                   let apiResponse = try JSONDecoder().decode(T.self, from: data)
+                let apiResponse = try JSONDecoder().decode(MinutesToPrepare.self, from: data)
                    completion(.success(apiResponse))
                } catch {
                    completion(.failure(WorkshopAppError.decodingError))
@@ -51,23 +51,6 @@ class MockNetworkManager: NetworkService {
     }
     
     // MARK: - Handlers
-    
-   /* func request<T>(fromEndpoint: EndPoint, httpMethod: HttpMethod, param: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-        guard let data = data(in: fileName, extension: "json") else {
-            assertionFailure("Unable to find the file with name: \(fileName ?? "")")
-            return
-        }
-        
-        do {
-            let apiResponse = try JSONDecoder().decode(T.self, from: data)
-            completion(.success(apiResponse))
-        } catch {
-            completion(.failure(OrderAppError.decodingError))
-            print(error.localizedDescription)
-        }
-
-    }*/
-    
     /// Data in file
     /// - Parameters:
     ///   - fileName: File name

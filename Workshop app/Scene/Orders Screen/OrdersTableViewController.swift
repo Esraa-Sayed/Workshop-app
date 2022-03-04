@@ -17,7 +17,7 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
     @IBOutlet weak var submitButton: UIBarButtonItem!
     @IBOutlet weak var submitBtn: UIBarButtonItem!
     var minutesToPrepareOrder = 0
-    var ordersPresenter:OrdersPresenter?
+    var ordersPresenter:OrdersPresenterProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         ordersPresenter = OrdersPresenter(view: self, networkService: MenuController.shared)
@@ -54,7 +54,7 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
                preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "Submit",
                style: .default, handler: { _ in
-                self.ordersPresenter?.uploadOrder()
+                self.ordersPresenter?.uploadOrder(menuIds: [])
             }))
             alertController.addAction(UIAlertAction(title: "Cancel",
                style: .cancel, handler: nil))
@@ -98,7 +98,7 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return MenuController.shared.order.menuItems.count
+        return (ordersPresenter?.getMenuItemsCount()) ?? 0
     }
 
     
@@ -129,5 +129,10 @@ class OrdersTableViewController: UITableViewController,OrdersTableViewController
                indexPath.row)
             isListEmpty()
         }
+    }
+}
+extension OrdersTableViewController{
+    func reloadTableView() {
+        self.tableView.reloadData()
     }
 }

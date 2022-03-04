@@ -30,10 +30,31 @@ class TestOrder: XCTestCase {
     func testSut_whenGetOrderCalled_PreperdTimeAreFilled() {
                 
         // When
-        sut.uploadOrder()
+        sut.uploadOrder(menuIds: [1,2,3,4,5])
         
         // Then
         XCTAssertNotEqual(sut.minutesToPrepare,nil)
     }
+    func testSut_whenGetOrderCalled_ItemCountAreFilled() {
+        let count:Int = sut.getMenuItemsCount()
+        XCTAssertNotEqual(count,nil)
+    }
+    func testSut_whenGetOrderCalled_OrderTotalAreFilled() {
+        let count = sut.getOrderTotal()
+        XCTAssertNotEqual(count,nil)
+    }
+    func testSut_whenGetOrderCalled_NotificationNameFilled() {
+        let notify = sut.getNotifyName()
+        XCTAssertNotEqual(notify,nil)
+    }
+    func testSut_whenGetCategoriesCalledWithFailure_categoriesStillEmpty() {
+        // Given
+        sut = OrdersPresenter(view: orderView , networkService: MockNetworkManager(fileName: "Error"))
+        // Then
+        sut.uploadOrder()
+        
+        // Then
+        XCTAssertEqual(sut.minutesToPrepare,nil)
 
+    }
 }

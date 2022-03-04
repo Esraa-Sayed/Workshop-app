@@ -7,27 +7,49 @@
 //
 
 import XCTest
-
+@testable import Workshop_app
 class TestOrderController: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    private var sut: OrdersTableViewController!
+       
+       override func setUp() {
+           super.setUp()
+           sut = OrdersTableViewController()
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+       }
+       
+       override func tearDown() {
+           sut = nil
+           super.tearDown()
+       }
+       
+       func testSUT_ShouldSetTableViewDelegate() {
+         
+         XCTAssertNotNil(sut.tableView.delegate)
+       }
+       
+       func testSUT_ShouldSetTableViewDatasource() {
+         
+         XCTAssertNotNil(sut.tableView.dataSource)
+       }
+    func testSut_whenViewDidLoadCalled_OrderPresenterIsSet() {
+        // When
+        sut.loadViewIfNeeded()
+        
+        // Then
+        XCTAssertNotNil(sut.ordersPresenter)
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    func testSut_startsWithEmptyTableView() {
+           XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
+       }
+       
+       func testSut_whenGetCategoriesAndReloadTableIsCalled_tableViewIsFilled() {
+           let presenter = MockOrderPresenter()
+           sut.loadViewIfNeeded()
+           sut.ordersPresenter = presenter
+          
+           sut.reloadTableView()
+           XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), presenter.getMenuItemsCount())
+       }
 
 }
