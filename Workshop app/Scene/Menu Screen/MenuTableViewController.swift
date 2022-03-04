@@ -21,17 +21,7 @@ class MenuTableViewController: UITableViewController {
     
     var indicator = UIActivityIndicatorView(style: .large)
     var menuPresenter: MenuPresenterProtocol!
-    
-    init?(coder: NSCoder, category: String) {
-        //menuPresenter.category = category
-        super.init(coder: coder)
-        menuPresenter = MenuPresenter(view: self, category: category, networkService: MenuController.shared)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,16 +73,18 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+                   let destVC = segue.destination as! MenuItemDetailViewController
+            
+            let menuItem = menuPresenter.menuItems?[indexPath.row]
     
-    @IBSegueAction func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
-        guard let cell = sender as? UITableViewCell, let indexPath =
-            tableView.indexPath(for: cell) else {
-                return nil
+            let menuDetailsPresenter = MenuDetailsPresenter (view: destVC, menuItem: menuItem!)
+
+            destVC.detailsPresenter = menuDetailsPresenter
+            
         }
-        
-        let menuItem = menuPresenter.menuItems?[indexPath.row]
-        return MenuItemDetailViewController(coder: coder, menuItem:menuItem!)
-        
     }
 }
 

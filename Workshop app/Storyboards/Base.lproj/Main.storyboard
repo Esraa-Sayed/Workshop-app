@@ -45,7 +45,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="f6y-V8-Y2e" kind="show" destinationCreationSelector="showMenu:sender:" id="DLf-Rh-tbd"/>
+                                    <segue destination="f6y-V8-Y2e" kind="show" id="DLf-Rh-tbd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -97,7 +97,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Bje-z8-vr4" kind="show" destinationCreationSelector="showMenuItem:sender:" id="vce-yr-FRd"/>
+                                    <segue destination="Bje-z8-vr4" kind="show" id="vce-yr-FRd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

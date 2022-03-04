@@ -33,12 +33,12 @@ class TestDetailsViewController: XCTestCase {
         sut.loadViewIfNeeded()
         XCTAssert(sut.nameLabel.text == menuItem.name)
     }
-    
-    func testSut_whenAddIsTapped_itemIsAddedToOrder() throws {
-        sut.orderButtonTapped(<#UIButton#>)
-        RunLoop.current.run(until: Date())
-        XCTAssert(sut.detailsPresenter?.menuItem?.id == menuItem.id)
-    }
+//    
+//    func testSut_whenAddIsTapped_itemIsAddedToOrder() throws {
+//        sut.orderButtonTapped(<#UIButton#>)
+//        RunLoop.current.run(until: Date())
+//        XCTAssert(sut.detailsPresenter?.menuItem?.id == menuItem.id)
+//    }
 }
 
 

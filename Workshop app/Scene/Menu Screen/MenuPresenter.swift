@@ -21,7 +21,7 @@ class MenuPresenter: MenuPresenterProtocol {
     var menuView: MenuViewProtocol?
     let networkService: NetworkService!
     
-    init(view: MenuViewProtocol, category: String, networkService: NetworkService) {
+    init(view: MenuViewProtocol, category: String, networkService: NetworkService = MenuController.shared) {
         self.menuView = view
         self.category = category
         self.networkService = networkService

@@ -20,7 +20,7 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
     let networkService: NetworkService!
     
     
-    init(view: CategoriesViewProtocol, networkService: NetworkService) {
+    init(view: CategoriesViewProtocol, networkService: NetworkService = MenuController.shared) {
         categoriesView = view
         self.networkService = networkService
     }
