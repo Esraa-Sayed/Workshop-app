@@ -11,13 +11,13 @@ import UIKit
 protocol CategoriesViewProtocol: class {
     func startIndicator()
     func stopIndicator()
-    func updateUI(with categories: [String])
+    func updateUI()
     func displayError(_ error: Error, title: String)
 }
 
 class CategoriesTableViewController: UITableViewController {
     
-    var categoriesPresenter: CategoriesPresenterProtocol!
+    lazy var categoriesPresenter: CategoriesPresenterProtocol = CategoriesPresenter(view: self, networkService: MenuController.shared)
     var indicator = UIActivityIndicatorView(style: .large)
     
     
@@ -26,7 +26,6 @@ class CategoriesTableViewController: UITableViewController {
 
         initIndicator()
         startIndicator()
-        categoriesPresenter = CategoriesPresenter(view: self, networkService: MenuController.shared)
         
         categoriesPresenter.fetchCategoriesFromNetwork()
     }
@@ -43,18 +42,14 @@ class CategoriesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(categoriesPresenter.categories != nil) {
-            return categoriesPresenter.categories.count
-        }
-        else{
-            return 0
-        }
+        return categoriesPresenter.getCategoriesCount()
+        
         
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = categoriesPresenter.categories[indexPath.row].capitalized
+        cell.textLabel?.text = categoriesPresenter.getCategory(at: indexPath.row).capitalized
         
         // Configure the cell...
         
@@ -70,7 +65,7 @@ class CategoriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
                    let destVC = segue.destination as! MenuTableViewController
-            let menuPresenter = MenuPresenter (view: destVC, category: categoriesPresenter.categories[indexPath.row])
+            let menuPresenter = MenuPresenter (view: destVC, category: categoriesPresenter.getCategory(at: indexPath.row))
             destVC.menuPresenter = menuPresenter
         }
     }
@@ -79,13 +74,14 @@ class CategoriesTableViewController: UITableViewController {
 }
 
 extension CategoriesTableViewController: CategoriesViewProtocol {
+    
     func startIndicator() {
         indicator.startAnimating()
     }
     func stopIndicator() {
         indicator.stopAnimating()
     }
-    func updateUI(with categories: [String]) {
+    func updateUI() {
         
         self.tableView.reloadData()
     }

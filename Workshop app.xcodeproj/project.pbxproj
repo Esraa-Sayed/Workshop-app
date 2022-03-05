@@ -41,6 +41,8 @@
 		E865C57127C91B4E0045F093 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57027C91B4E0045F093 /* MenuPresenter.swift */; };
 		E865C57427C91B960045F093 /* MenuDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */; };
 		E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57627C91BC80045F093 /* OrdersPresenter.swift */; };
+		E868FFD527D3752E001160E0 /* CategoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */; };
+		E868FFD627D3752E001160E0 /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		E865C57027C91B4E0045F093 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		E865C57327C91B960045F093 /* MenuDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailsPresenter.swift; sourceTree = "<group>"; };
 		E865C57627C91BC80045F093 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
+		E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTests.swift; sourceTree = "<group>"; };
+		E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
 		F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.release.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,6 +320,7 @@
 		E855002827CA5CF100B91BE1 /* NetworkTest */ = {
 			isa = PBXGroup;
 			children = (
+				E868FFD227D3752D001160E0 /* Category */,
 				59AD167227D273D500040FAD /* Menu */,
 				59AD167027D2738900040FAD /* Details */,
 				59AD167127D273C400040FAD /* Order */,
@@ -359,6 +364,15 @@
 				E865C57627C91BC80045F093 /* OrdersPresenter.swift */,
 			);
 			path = "Orders Screen";
+			sourceTree = "<group>";
+		};
+		E868FFD227D3752D001160E0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */,
+				E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,12 +547,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E868FFD627D3752E001160E0 /* CategoryViewControllerTests.swift in Sources */,
 				02E4393727D2788200DF2DE2 /* TestMenuController.swift in Sources */,
 				E8618BAC27D244700010EE92 /* TestDetailsViewController.swift in Sources */,
 				E85DC0F427D1266900E6679C /* TestDetailsPresenter.swift in Sources */,
 				02E4393F27D2C96000DF2DE2 /* MockOrderPresenter.swift in Sources */,
 				02E4393A27D2875100DF2DE2 /* mocNetworkManager.swift in Sources */,
 				E85DC0F227D1265400E6679C /* TestMenuPresenter.swift in Sources */,
+				E868FFD527D3752E001160E0 /* CategoryPresenterTests.swift in Sources */,
 				02E4393527D2782C00DF2DE2 /* TestOrderController.swift in Sources */,
 				59AD167427D28D2900040FAD /* MockMenuView.swift in Sources */,
 				E85DC0F627D1267F00E6679C /* TestOrderPresenter.swift in Sources */,

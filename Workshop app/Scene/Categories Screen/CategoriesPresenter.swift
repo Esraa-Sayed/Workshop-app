@@ -9,14 +9,15 @@
 import Foundation
 
 protocol CategoriesPresenterProtocol {
-    var categories: [String]! {get set}
+    func getCategoriesCount() -> Int
+    func getCategory(at index: Int) -> String
     func fetchCategoriesFromNetwork()
 }
 
 class CategoriesPresenter: CategoriesPresenterProtocol {
     
-    var categories: [String]!
-    private weak var categoriesView: CategoriesViewProtocol!
+    lazy var categories: [String] = []
+    weak var categoriesView: CategoriesViewProtocol!
     let networkService: NetworkService!
     
     
@@ -29,14 +30,13 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
         networkService.fetchCategories { [weak self] (result)  in
                 switch result {
                 case .success(let categories):
-                    self?.categories = categories
+                    self?.categories = categories?.categories as! [String]
                     DispatchQueue.main.async {
-                        self?.categoriesView.updateUI(with: categories ?? [])
+                        self?.categoriesView.updateUI()
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self?.categoriesView.displayError(error,
-                                                      title: "Failed to Fetch Categories")
+                        self?.categoriesView.displayError(error, title: "Failed to Fetch Categories")
                     }
                 }
                 DispatchQueue.main.async {
@@ -44,6 +44,17 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
                 }
             }
         }
+    
+    func getCategoriesCount() -> Int {
+        return categories.count
+    }
+    
+    func getCategory(at index: Int) -> String {
+        if index < categories.count {
+            return categories[index]
+        }
+        return ""
+    }
     
     
     
