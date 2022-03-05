@@ -12,7 +12,7 @@ protocol CategoriesViewProtocol: class {
     func startIndicator()
     func stopIndicator()
     func updateUI()
-    func displayError(_ error: Error, title: String)
+    func displayError(_ error: String, title: String)
 }
 
 class CategoriesTableViewController: UITableViewController {
@@ -85,14 +85,14 @@ extension CategoriesTableViewController: CategoriesViewProtocol {
         
         self.tableView.reloadData()
     }
-    func displayError(_ error: Error, title: String) {
-        
-        let alert = UIAlertController(title: title,
-                                      message: error.localizedDescription,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss",
-                                      style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
+    
+    func displayError(_ error: String, title: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message:
+               error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss",
+               style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

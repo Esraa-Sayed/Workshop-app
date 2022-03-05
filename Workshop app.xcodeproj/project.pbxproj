@@ -43,6 +43,7 @@
 		E865C57727C91BC80045F093 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865C57627C91BC80045F093 /* OrdersPresenter.swift */; };
 		E868FFD527D3752E001160E0 /* CategoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */; };
 		E868FFD627D3752E001160E0 /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */; };
+		E868FFD827D38D25001160E0 /* TestNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868FFD727D38D25001160E0 /* TestNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E865C57627C91BC80045F093 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
 		E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTests.swift; sourceTree = "<group>"; };
 		E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
+		E868FFD727D38D25001160E0 /* TestNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetwork.swift; sourceTree = "<group>"; };
 		F0D025A1B9D7434F867AC6CC /* Pods-Workshop app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshop app.release.xcconfig"; path = "Target Support Files/Pods-Workshop app/Pods-Workshop app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,6 +371,7 @@
 		E868FFD227D3752D001160E0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E868FFD727D38D25001160E0 /* TestNetwork.swift */,
 				E868FFD327D3752E001160E0 /* CategoryPresenterTests.swift */,
 				E868FFD427D3752E001160E0 /* CategoryViewControllerTests.swift */,
 			);
@@ -556,6 +559,7 @@
 				E85DC0F227D1265400E6679C /* TestMenuPresenter.swift in Sources */,
 				E868FFD527D3752E001160E0 /* CategoryPresenterTests.swift in Sources */,
 				02E4393527D2782C00DF2DE2 /* TestOrderController.swift in Sources */,
+				E868FFD827D38D25001160E0 /* TestNetwork.swift in Sources */,
 				59AD167427D28D2900040FAD /* MockMenuView.swift in Sources */,
 				E85DC0F627D1267F00E6679C /* TestOrderPresenter.swift in Sources */,
 				02E4393D27D2C6DA00DF2DE2 /* MockOrderView.swift in Sources */,
