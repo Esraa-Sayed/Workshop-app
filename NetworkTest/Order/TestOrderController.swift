@@ -15,6 +15,9 @@ class TestOrderController: XCTestCase {
        override func setUp() {
            super.setUp()
            sut = OrdersTableViewController()
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          sut = storyboard.instantiateViewController(withIdentifier: "OrdersTableViewController") as? OrdersTableViewController
+        UIApplication.shared.keyWindow?.rootViewController = sut
 
        }
        
@@ -45,11 +48,28 @@ class TestOrderController: XCTestCase {
        
        func testSut_whenGetCategoriesAndReloadTableIsCalled_tableViewIsFilled() {
            let presenter = MockOrderPresenter()
-           sut.loadViewIfNeeded()
+            sut.notify()
            sut.ordersPresenter = presenter
           
            sut.reloadTableView()
            XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), presenter.getMenuItemsCount())
        }
+    func testSut_displayEstimatedTime(){
+          // To register the cell with the table view
+          
+          sut.ordersPresenter = MockOrderPresenter()
 
+        sut.displayEstimatedTime(minutesToPrepare: 5)
+        RunLoop.current.run(until: Date())
+        XCTAssertTrue(sut.presentedViewController is UIAlertController)
+        XCTAssertEqual(sut.presentedViewController?.title, "Order Confirmed")
+      }
+    func testSut_displayError()
+    {
+        sut.ordersPresenter = MockOrderPresenter()
+        sut.displayError("error", title: "fail")
+        RunLoop.current.run(until: Date())
+        XCTAssertTrue(sut.presentedViewController is UIAlertController)
+        XCTAssertEqual(sut.presentedViewController?.title, "fail")
+    }
 }

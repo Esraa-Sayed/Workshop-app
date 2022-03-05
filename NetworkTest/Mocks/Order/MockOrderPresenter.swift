@@ -10,6 +10,13 @@ import Foundation
 @testable import Workshop_app
 class MockOrderPresenter: OrdersPresenterProtocol
 {
+    var M:[MenuItem]?
+    func getMenuItems() -> [MenuItem] {
+        var x:MenuItem = MenuItem(category: "salads", id: 6, imageURL: "http://localhost:8080/images/6.png", name: "Italian Salad", itemDescription: "Garlic, red onions, tomatoes, mushrooms, and olives on top of romaine lettuce.", price: 5)
+        var M: [MenuItem] = [x,x,x,x,x,x,x]
+        return M
+    }
+    
        var networkService: NetworkService = MockNetworkManager(fileName: "")
        var minutesToPrepare:Int!
       private let orderTotal:Double? = nil
@@ -29,7 +36,10 @@ class MockOrderPresenter: OrdersPresenterProtocol
     func uploadOrder(menuIds: [Int]) {
         minutesToPrepare = 5
     }
-    
+    func remveAll()
+    {
+        M = nil
+    }
     
 }
 

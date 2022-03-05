@@ -12,6 +12,8 @@ protocol OrdersPresenterProtocol {
      func getMenuItemsCount()->Int
      func getOrderTotal()->Double
      func uploadOrder(menuIds:[Int])
+     func getMenuItems()->[MenuItem]
+    func remveAll()
 }
 class OrdersPresenter:OrdersPresenterProtocol {
    var orderView: OrdersTableViewControllerProtocol!
@@ -59,12 +61,19 @@ class OrdersPresenter:OrdersPresenterProtocol {
                     self.orderView.setMinutesToPrepareOrder(minutes: minutesToPrepare)
                    self.orderView.displayEstimatedTime(minutesToPrepare: minutesToPrepare)
                 }
-            case .failure(let error):
-                self.orderView.displayError(error, title: "Order Submission Failed")
+            case .failure(let _):
+                self.orderView.displayError("error", title: "Order Submission Failed")
             }
         }
     }
-    
-    
+    func getMenuItems()->[MenuItem]
+    {
+        var menuItem:[MenuItem] = MenuController.shared.order.menuItems
+        return menuItem
+    }
+    func remveAll()
+    {
+         MenuController.shared.order.menuItems.removeAll()
+    }
 }
 

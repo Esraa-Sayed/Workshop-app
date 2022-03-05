@@ -57,4 +57,15 @@ class TestOrder: XCTestCase {
         XCTAssertEqual(sut.minutesToPrepare,nil)
 
     }
+    func testSut_getMenuItems()
+    {
+        let menuItems = sut.getMenuItems()
+        XCTAssertNotEqual(menuItems,nil)
+    }
+    func testSut_removeAll()
+    {
+        sut.remveAll()
+        let menuItems = sut.getMenuItems()
+        XCTAssertNotEqual(menuItems,nil)
+    }
 }

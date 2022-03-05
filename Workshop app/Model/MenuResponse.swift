@@ -27,4 +27,12 @@ struct MenuItem: Codable , Equatable{
         case itemDescription = "description"
         case price
     }
+    init(category: String,id: Int,imageURL: String,name:String, itemDescription: String,price: Double) {
+        self.category  = category
+        self.id = id
+         self.imageURL = imageURL
+        self.name = name
+         self.itemDescription = itemDescription
+         self.price =  price
+    }
 }
