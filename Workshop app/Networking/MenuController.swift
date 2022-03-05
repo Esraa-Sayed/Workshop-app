@@ -13,7 +13,7 @@ protocol NetworkService {
     typealias MinutesToPrepare = Int
     var order: Order {get set}
     static var orderUpdatedNotification: Notification.Name{get}
-    func fetchCategories(completion: @escaping (Result<[String]?,Error>) -> Void)
+    func fetchCategories(completion: @escaping (Result<CategoriesResponse?,Error>) -> Void)
     func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem]?,Error>) -> Void)
     func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<MinutesToPrepare, Error>) -> Void)
     
@@ -35,7 +35,7 @@ class MenuController: NetworkService{
     
     
 
-    func fetchCategories(completion: @escaping (Result<[String]?,Error>) -> Void) {
+    func fetchCategories(completion: @escaping (Result<CategoriesResponse?,Error>) -> Void) {
         let categoriesURL =
         baseURL.appendingPathComponent("categories")
         let task = URLSession.shared.dataTask(with: categoriesURL)
@@ -46,7 +46,7 @@ class MenuController: NetworkService{
                     let categoriesResponse = try
                     jsonDecoder.decode(CategoriesResponse.self,
                                        from: data)
-                    completion(.success(categoriesResponse.categories))
+                    completion(.success(categoriesResponse))
                 } catch {
                     completion(.failure(error))
                 }

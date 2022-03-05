@@ -20,8 +20,18 @@ class MockNetworkManager: NetworkService {
         }
     }
     
-    func fetchCategories(completion: @escaping (Result<[String]?, Error>) -> Void) {
-    
+    func fetchCategories(completion: @escaping (Result<CategoriesResponse?, Error>) -> Void) {
+        guard let data = data(in: fileName, extension: "json") else {
+            assertionFailure("Unable to find the file with name: Menu")
+            return
+        }
+        do {
+            let apiResponse = try JSONDecoder().decode(CategoriesResponse.self, from: data)
+            completion(.success(apiResponse))
+        } catch {
+            completion(.failure(WorkshopAppError.decodingError))
+            print(error.localizedDescription)
+        }
     }
     
     
