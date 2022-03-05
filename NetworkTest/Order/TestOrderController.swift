@@ -72,4 +72,41 @@ class TestOrderController: XCTestCase {
         XCTAssertTrue(sut.presentedViewController is UIAlertController)
         XCTAssertEqual(sut.presentedViewController?.title, "fail")
     }
+    func testSUT_HasRightBarButtonItem() {
+        
+        XCTAssertNotNil(self.sut.navigationItem.rightBarButtonItem)
+    }
+    func testSUT_HasRightBarButtonItem_WithTarget_CorrectlyAssigned() {
+           
+           if let rightBarButtonItem = self.sut.navigationItem.rightBarButtonItem {
+               
+               XCTAssertNotNil(rightBarButtonItem.target)
+               XCTAssert(rightBarButtonItem.target === self.sut)
+           }
+           else {
+               
+               XCTAssertTrue(false)
+           }
+       }
+    func testSUT_HasRightBarButtonItem_WithActionMethod_CorrectlyAssigned() {
+        
+        if let rightBarButtonItem = self.sut.navigationItem.rightBarButtonItem {
+            
+            XCTAssertTrue(rightBarButtonItem.action?.description == "SubmitPressed:")
+        }
+        else {
+            
+            XCTAssertTrue(false)
+        }
+    }
+    func testSUT_CanDismissViewController_WhenRightBarButtonTapped() {
+            
+            sut.SubmitPressed(UIBarButtonItem())
+            
+            RunLoop.current.run(until: Date())
+            XCTAssertTrue(sut.presentedViewController is UIAlertController)
+            XCTAssertEqual(sut.presentedViewController?.title, "Confirm Order")
+
+    }
+    
 }
