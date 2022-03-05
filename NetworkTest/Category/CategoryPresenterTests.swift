@@ -92,7 +92,7 @@ class MockCategoryView: CategoriesViewProtocol {
         
     }
     
-    func displayError(_ error: Error, title: String) {
+    func displayError(_ error: String, title: String) {
         
     }
 }

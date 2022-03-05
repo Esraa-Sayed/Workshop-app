@@ -36,7 +36,7 @@ class CategoriesPresenter: CategoriesPresenterProtocol {
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self?.categoriesView.displayError(error, title: "Failed to Fetch Categories")
+                        self?.categoriesView.displayError(error.localizedDescription, title: "Failed to Fetch Categories")
                     }
                 }
                 DispatchQueue.main.async {
