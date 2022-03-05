@@ -24,6 +24,7 @@ class TestDetailsPresenter: XCTestCase {
     }
 
     override func tearDown(){
+        sut.networkService.order.menuItems.removeAll()
         sut = nil
         detailsView = nil
         menuItem = nil
