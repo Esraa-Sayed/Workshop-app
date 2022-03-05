@@ -24,8 +24,8 @@ class TestDetailsViewController: XCTestCase {
     }
 
     override func tearDown(){
+        sut.detailsPresenter = nil
         sut = nil
-        menuItem = nil
     }
 
     func testSut_whenInitCalled_detailsPresenterIsSet() throws {
@@ -57,7 +57,7 @@ class MockDetailsPresenter: DetailsPresenterProtocol {
     }
     
     func addItemToOrder() -> MenuItem {
-        self.networkService.order.menuItems.append(menuItem!)
-        return self.networkService.order.menuItems.last!
+        return self.menuItem!
     }
+    
 }
